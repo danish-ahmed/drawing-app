@@ -14,8 +14,8 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigation = [
-    { name: "Home", href: "/" },
     { name: "Dashboard", href: "/dashboard" },
+    { name: "Leaderboard", href: "/profile" },
   ];
 
   return (
@@ -72,7 +72,8 @@ const Navbar = () => {
               <Image src="/logo 1.png" width={50} height={50} alt="star logo" />
             </Link>
           </div>
-          <div className="hidden lg:flex lg:gap-x-12">
+          {session && (
+            <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -83,6 +84,8 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+          )}
+          
           <div className="flex flex-1 items-center justify-end gap-x-6">
             {!session ? (
               <>

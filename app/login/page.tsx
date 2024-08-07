@@ -151,7 +151,7 @@ const NextLoginPage = () => {
             </form>
 
             <div>
-              <div className="relative mt-10">
+              {/* <div className="relative mt-10">
                 <div
                   className="absolute inset-0 flex items-center"
                   aria-hidden="true"
@@ -201,7 +201,7 @@ const NextLoginPage = () => {
                   </span>
                 </button>
                 
-              </div>
+              </div> */}
               <p className="text-red-600 text-center text-[16px] my-4">
                   {error && error}
                 </p>

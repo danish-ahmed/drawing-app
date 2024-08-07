@@ -23,10 +23,12 @@ const RegisterPage = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const email = e.target[0].value;
-    const password = e.target[1].value;
-    const confirmPassword = e.target[2].value;
-
+    const fname = e.target[0].value;
+    const email = e.target[1].value;
+    const age = e.target[2].value;
+    const country = e.target[3].value;
+    const password = e.target[4].value;
+    const confirmPassword = e.target[5].value;
     if (!isValidEmail(email)) {
       setError("Email is invalid");
       toast.error("Email is invalid");
@@ -52,7 +54,10 @@ const RegisterPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          fname,
           email,
+          age,
+          country,
           password,
         }),
       });
@@ -88,6 +93,25 @@ const RegisterPage = () => {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form className="space-y-6" onSubmit={handleSubmit}>
+              
+              <div>
+                <label
+                  htmlFor="fname"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Full Name
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="fname"
+                    name="fname"
+                    type="text"
+                    autoComplete="fname"
+                    required
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
               <div>
                 <label
                   htmlFor="email"
@@ -101,6 +125,44 @@ const RegisterPage = () => {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    required
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="age"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Age
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="age"
+                    name="age"
+                    type="number"
+                    autoComplete="age"
+                    required
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Country
+                </label>
+                <div className="mt-2">
+                  <input
+                    id="country"
+                    name="country"
+                    type="text"
+                    autoComplete="country"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />

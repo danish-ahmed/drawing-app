@@ -6,6 +6,7 @@ import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
 import connect from "@/utils/db";
+import authOptions from '../../../../lib/configs/auth/authOptions'
 
 export const authOptions: any = {
   // Configure one or more authentication providers
@@ -92,5 +93,5 @@ export const authOptions: any = {
   },
 };
 
-export const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST };
