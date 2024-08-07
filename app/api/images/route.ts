@@ -6,7 +6,7 @@ import connect from "@/utils/db";
 export const GET = async (request: any) => {
   await connect()
   const email = request.url.split('?')[1].split('=')[1];
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).sort({'images.createdAt':-1});
   return NextResponse.json(user);
 }
 

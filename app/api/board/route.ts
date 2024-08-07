@@ -10,17 +10,17 @@ export const GET = async (request: any) => {
         [
             {
                 "$project":{
-                    "length":{"$size":"$images"},
+                    "score":{"$max":"$images.marks"},
                     "fname":1,
-                    "average":1,
+                    "email":1,
+                    // "average":1,
                 }
             },
-            {"$sort":{"length":-1,"average":1}},
+            {"$sort":{"score":-1}},
             {"$limit":10}
             
         ]
     );
-    console.log(user);
 
   return NextResponse.json(user);
 
