@@ -15,6 +15,8 @@ async function getData() {
 
 async function getBoardData() {
   const session = await getServerSession();
+  console.log(`Fetching data from ${baseUrl}/api/board`)
+
   const res = await fetch( `${baseUrl}/api/board`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
