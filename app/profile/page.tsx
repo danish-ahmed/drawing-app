@@ -1,10 +1,11 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 async function getData() {
   const session = await getServerSession();
-  const res = await fetch( `https://drawing-app-livid.vercel.app/api/images?email=${session?.user?.email}`)
+  const res = await fetch( `${baseUrl}/api/images?email=${session?.user?.email}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -13,7 +14,7 @@ async function getData() {
 
 async function getBoardData() {
   const session = await getServerSession();
-  const res = await fetch( `https://drawing-app-livid.vercel.app/api/board`)
+  const res = await fetch( `${baseUrl}/api/board`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
