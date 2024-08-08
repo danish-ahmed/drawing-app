@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 
 async function getData() {
   const session = await getServerSession();
-  const res = await fetch( `http://localhost:3000/api/images?email=${session?.user?.email}`)
+  const res = await fetch( `https://drawing-app-livid.vercel.app/api/images?email=${session?.user?.email}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -13,7 +13,7 @@ async function getData() {
 
 async function getBoardData() {
   const session = await getServerSession();
-  const res = await fetch( `http://localhost:3000/api/board`)
+  const res = await fetch( `https://drawing-app-livid.vercel.app/api/board`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
