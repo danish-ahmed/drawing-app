@@ -5,6 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
 async function getData() {
   const session = await getServerSession();
+  console.log(`Fetching data from ${baseUrl}/api/images?email=${session?.user?.email}`)
   const res = await fetch( `${baseUrl}/api/images?email=${session?.user?.email}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')

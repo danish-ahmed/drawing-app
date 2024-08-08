@@ -6,8 +6,16 @@ import connect from "@/utils/db";
 export const GET = async (request: any) => {
   await connect()
   const email = request.url.split('?')[1].split('=')[1];
-  const user = await User.findOne({ email }).sort({'images.createdAt':-1});
-  return NextResponse.json(user);
+  console.log(email)
+  try{
+    const user = await User.findOne({ email }).sort({'images.createdAt':-1});
+    console.log(email)
+    return NextResponse.json(user);
+  }catch(err){
+    console.error('Error fetching images'+err);
+    return NextResponse.json({error:err});
+
+  }
 }
 
 export const POST = async (request: any) => {
