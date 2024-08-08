@@ -44,10 +44,6 @@ const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    session({session,user}: { session: any; user: any }){
-      session.user.id = user._id;
-      return session;
-    },
     async signIn({ user, account }: { user: any; account: any }) {
       if (account?.provider == 'credentials') {
         return true;
