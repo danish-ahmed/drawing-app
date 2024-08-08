@@ -5,10 +5,10 @@ import connect from "@/utils/db";
 
 export const GET = async (request: any) => {
   await connect()
-  const email = request.url.split('?')[1].split('=')[1];
-  console.log(email)
+  const id = request.url.split('?')[1].split('=')[1];
+  // console.log(id)
   try{
-    const user = await User.findOne({ email:"admin@admin.com" }).sort({'images.createdAt':-1});
+    const user = await User.findOne({ _id:id }).sort({'images.createdAt':-1});
     console.log(email)
     console.log(user)
     return NextResponse.json(user);
