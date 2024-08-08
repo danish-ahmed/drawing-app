@@ -5,7 +5,7 @@ import connect from "@/utils/db";
 
 export const GET = async (request: any) => {
   await connect()
-    conosle.log('HELLO---BOARD');
+    console.log('HELLO---BOARD');
     const user = await User.aggregate(
         [
             {
