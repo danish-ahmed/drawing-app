@@ -10,6 +10,7 @@ export const GET = async (request: any) => {
   try{
     const user = await User.findOne({ email }).sort({'images.createdAt':-1});
     console.log(email)
+    console.log(user)
     return NextResponse.json(user);
   }catch(err){
     console.error('Error fetching images'+err);
