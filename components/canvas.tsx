@@ -116,7 +116,7 @@ export default function Canvas() {
         const data = await ajaxResponse.json();
         // router.push('http://localhost:3000/dashboard/profile')
         if(data){
-          return router.push('dashboard/profile')
+          return router.push('/profile')
         }
         // if(data){
         // }
