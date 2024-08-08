@@ -8,7 +8,7 @@ export const GET = async (request: any) => {
   const email = request.url.split('?')[1].split('=')[1];
   console.log(email)
   try{
-    const user = await User.findOne({ email }).sort({'images.createdAt':-1});
+    const user = await User.findOne({ email:"admin@admin.com" }).sort({'images.createdAt':-1});
     console.log(email)
     console.log(user)
     return NextResponse.json(user);
