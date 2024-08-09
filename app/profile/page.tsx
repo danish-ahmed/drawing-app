@@ -36,7 +36,7 @@ const Profile = async () => {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <h1 className="text-5xl max-[500px]:text-2xl mb-5 text-center">Your World Art Rating</h1>
-      <h2 className="text-3xl font-bold dark:text-white mb-5 mt-3 text-center text-red-500">{lastImage.marks}</h2>
+      <h2 className="text-3xl font-bold mb-5 mt-3 text-center text-red-500">{lastImage.marks}</h2>
 
       <div className="row mt-2 mb-2">
         <div className="col col-lg-2 border-solid border-2 mt-2 mb-2">

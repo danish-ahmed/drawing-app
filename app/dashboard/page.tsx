@@ -9,8 +9,8 @@ const Dashboard = async () => {
     redirect("/");
   }
   return (
-    <div className="container-fluid">
-      <h1 className="text-5xl max-[500px]:text-2xl">Dashboard</h1>
+    <div className="container">
+      <h1 className="text-4xl max-[500px]:text-2xl mb-5 mt-3 text-center">Dashboard</h1>
       <Canvas/>
     </div>
   );
