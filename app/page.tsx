@@ -28,9 +28,10 @@ export default function Home() {
   return (
       
       <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-        <h1 className="text-5xl max-[500px]:text-2xl">World Art Rating</h1>
-
+        <div className="bg-white px-6 py-12 space-y-6" >        
+          <h1 className="text-5xl max-[500px]:text-2xl text-center">World Art Rating</h1>
+        </div>
+        <div className="bg-slate-300 px-6 py-12 shadow sm:rounded-lg sm:px-12">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
@@ -53,9 +54,9 @@ export default function Home() {
             <div>
               <button
                 type="submit"
-                className="flex w-full border border-black justify-center rounded-md bg-black px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-white transition-colors hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="flex w-full border border-black justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-black bg-yellow-400 hover:bg-yellow-500 shadow-sm hover:bg-white transition-colors hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
-                Sign in
+                Artist Registration Form
               </button>
             </div>
           </form>
