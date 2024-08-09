@@ -8,13 +8,18 @@ import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
+    if(router?.query?.email){
+      setEmail(router.query.email)
+    }
     if (sessionStatus === "authenticated") {
       router.replace("/dashboard");
     }
+    
   }, [sessionStatus, router]);
 
   const isValidEmail = (email: string) => {
@@ -24,7 +29,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const fname = e.target[0].value;
-    const email = e.target[1].value;
+    const email = email;
     const age = e.target[2].value;
     const country = e.target[3].value;
     const password = e.target[4].value;
@@ -124,6 +129,7 @@ const RegisterPage = () => {
                     id="email"
                     name="email"
                     type="email"
+                    value={email}
                     autoComplete="email"
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

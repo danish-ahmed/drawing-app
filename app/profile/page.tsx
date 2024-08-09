@@ -13,16 +13,16 @@ async function getData() {
   return res.json();
 }
 
-async function getBoardData() {
-  const session = await getServerSession();
-  console.log(`Fetching data from ${baseUrl}/api/board`)
+// async function getBoardData() {
+//   const session = await getServerSession();
+//   console.log(`Fetching data from ${baseUrl}/api/board`)
 
-  const res = await fetch( `${baseUrl}/api/board`)
-  if (!res.ok) {
-    throw new Error('Failed to fetch data')
-  }
-  return res.json();
-}
+//   const res = await fetch( `${baseUrl}/api/board`)
+//   if (!res.ok) {
+//     throw new Error('Failed to fetch data')
+//   }
+//   return res.json();
+// }
 
 const Profile = async () => {
   const session = await getServerSession();
@@ -30,7 +30,7 @@ const Profile = async () => {
     redirect("/");
   }
   const data = await getData(); 
-  const boardData = await getBoardData(); 
+  // const boardData = await getBoardData(); 
   const lastImage = data.images[data.images.length-1]
   const topFive = data.images.slice(0,5);
   return (
@@ -48,73 +48,7 @@ const Profile = async () => {
       </div>
       <br />
       <h2 className="text-3xl font-bold dark:text-white mb-5 mt-3">Leader Board</h2>
-      <br />
-      <table className="" style={{width:'100%',textAlign:'center'}}>
-        <thead>
-          <tr>
-            <th scope="col">Rank</th>
-            <th scope="col">Full Name</th>
-            <th scope="col">Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {boardData?.map((data:any, index:number) => {
-            return data?.email === session?.user?.email ? (
-            <tr className="bg-orange border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600" key={data._id}>
-              <th scope="row">
-                {index+1}
-              </th>
-              <th>
-                {data?.fname}
-              </th>
-              <th>
-                {data?.score}
-              </th>
-              <th>Your Score</th>
-            </tr>
-          ):
-          (
-            <tr key={data._id}>
-              <th scope="row">
-                {index+1}
-              </th>
-              <td>
-                {data.fname}
-              </td>
-              <td>
-                {data.score}
-              </td>
-            </tr>
-          )
-          })}
-        </tbody>
-      </table>
-      <br />
-
-      <h2 className="text-3xl font-bold dark:text-white mb-5 mt-3">Some of your work</h2>
-      <br />
-      <table className="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Image</th>
-            <th scope="col">Score</th>
-            <th scope="col">Feedback</th>
-          </tr>
-        </thead>
-        <tbody>
-          {topFive.map((image:any) => (
-            <tr key={image._id}>
-              <td>
-                <img style={{border:'1px solid #ccc'}} className="card-img-top" src={image.imageUri} alt="Card image cap " />
-              </td>
-              <td>
-                Marks: {image.marks} out of 999
-              </td>
-              <td>{image.aiFeedback.substr(0,100)} ...</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      
     </div>
      
   );
