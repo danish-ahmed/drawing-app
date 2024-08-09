@@ -188,7 +188,7 @@ export default function Canvas() {
             onClick={handleExportImage}
             disabled={loading}
           >
-          Submit your drawing
+          Submit My Masterpiece
         </button>
       </div>
     </div>
