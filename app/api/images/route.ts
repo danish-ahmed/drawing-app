@@ -28,12 +28,12 @@ export const POST = async (request: any) => {
     
    
     console.log(aiResponse);
-    let a = 999-composition_score;
-    let b = 999-use_of_color_score;
-    let c = 999-message_score;
-    const averge = (a+b+c)/3;
+    let a = 999-aiResponse.composition_score;
+    let b = 999-aiResponse.use_of_color_score;
+    let c = 999-aiResponse.message_score;
+    const average_score = (a+b+c)/3;
 
-    const marks = Math.floor((average/999)*8);
+    const marks = Math.floor((average_score/999)*8);
 
     const imageObj = {
       imageUri:image,

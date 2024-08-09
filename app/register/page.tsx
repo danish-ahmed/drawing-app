@@ -5,17 +5,20 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { useSearchParams } from 'next/navigation'
+
 
 const RegisterPage = () => {
   const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const router = useRouter();
+  const searchParams = useSearchParams()
+ 
+  const email = searchParams.get('email')
+
   const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
-    if(router?.query?.email){
-      setEmail(router.query.email)
-    }
     if (sessionStatus === "authenticated") {
       router.replace("/dashboard");
     }
@@ -29,7 +32,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     const fname = e.target[0].value;
-    const email = email;
+    const email = e.target[1].value;
     const age = e.target[2].value;
     const country = e.target[3].value;
     const password = e.target[4].value;

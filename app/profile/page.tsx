@@ -1,7 +1,7 @@
 import React from "react";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
 async function getData() {
   const session = await getServerSession();
@@ -34,20 +34,20 @@ const Profile = async () => {
   const lastImage = data.images[data.images.length-1]
   const topFive = data.images.slice(0,5);
   return (
-    <div className="container">
-      <h1 className="text-5xl max-[500px]:text-2xl mb-2">Drawing Score</h1>
+    <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <h1 className="text-5xl max-[500px]:text-2xl mb-5 text-center">Your World Art Rating</h1>
+      <h2 className="text-3xl font-bold dark:text-white mb-5 mt-3 text-center text-red-50">{lastImage.marks}</h2>
+
       <div className="row mt-2 mb-2">
         <div className="col col-lg-2 border-solid border-2 mt-2 mb-2">
           <img className="h-auto max-w-full" src={lastImage.imageUri} alt="" />
         </div>
         <div className="col col-lg-2">
-          <h3 className="text-5xl max-[500px]:text-2 mt-2 mb-2">Your Drawing Score is: {lastImage.marks} out of 999.</h3>
           {/* <h1 className="text-5xl max-[500px]:text-2 mt-2 mb-2">AI Feedback</h1> */}
           {/* <p>{lastImage.aiFeedback}</p> */}
         </div>
       </div>
       <br />
-      <h2 className="text-3xl font-bold dark:text-white mb-5 mt-3">Leader Board</h2>
       
     </div>
      
