@@ -9,14 +9,17 @@ export const GET = async (request: any) => {
   console.log(email)
   try{
     const user = await User.findOne({ email:email }).sort({'images.createdAt':-1});
-    console.log(email)
-    console.log(user)
+    
     return NextResponse.json(user);
   }catch(err){
     console.error('Error fetching images'+err);
     return NextResponse.json({error:err});
 
   }
+}
+
+function countDigits(number: number) {
+    return number.toString().length;
 }
 
 export const POST = async (request: any) => {
@@ -27,17 +30,30 @@ export const POST = async (request: any) => {
   if (user) {
     
    
-    console.log(aiResponse);
-    let a = 999-aiResponse.composition_score;
-    let b = 999-aiResponse.use_of_color_score;
-    let c = 999-aiResponse.message_score;
-    const average_score = (a+b+c)/3;
+    // console.log(aiResponse);
+    let ax = aiResponse.composition_score;
+    let bx = aiResponse.use_of_color_score;
+    let cx = aiResponse.message_score;
 
-    const marks = Math.floor((average_score/999)*8);
+    let a = 999-ax;
+    let b = 999-bx;
+    let c = 999-cx;
+    // const average_score = (a+b+c)/3;
 
+    const y = Math.floor((((a+b+c)/3)/999)*8);
+
+    const bn = b*(10 ** countDigits(c));
+    console.log('bn',bn)
+    const an = a*(10 ** (countDigits(b) + countDigits(c)));
+    console.log('an',an)
+    const yn = y*(10 ** (countDigits(a) + countDigits(b) + countDigits(c)))
+    console.log('yn',yn)
+    const marks = c + bn + an + yn;
+    console.log('marks',marks)
+    
     const imageObj = {
       imageUri:image,
-      aiFeedback:aiResponse.composition,
+      aiFeedback:JSON.stringify(aiResponse),
       marks:marks
     }
     user.images.push(

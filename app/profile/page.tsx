@@ -5,7 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
 
 async function getData() {
   const session = await getServerSession();
-  console.log(`Fetching data from ${baseUrl}/api/images?email=${session?.user?.email}`)
+  // console.log(`Fetching data from ${baseUrl}/api/images?email=${session?.user?.email}`)
   const res = await fetch( `${baseUrl}/api/images?email=${session?.user?.email}`)
   if (!res.ok) {
     throw new Error('Failed to fetch data')
@@ -32,11 +32,10 @@ const Profile = async () => {
   const data = await getData(); 
   // const boardData = await getBoardData(); 
   const lastImage = data.images[data.images.length-1]
-  const topFive = data.images.slice(0,5);
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <h1 className="text-5xl max-[500px]:text-2xl mb-5 text-center">Your World Art Rating</h1>
-      <h2 className="text-3xl font-bold mb-5 mt-3 text-center text-red-500">{lastImage.marks}</h2>
+      <h2 className="text-3xl font-bold mb-5 mt-3 text-center text-red-500">{lastImage.marks.toLocaleString()}</h2>
 
       <div className="row mt-2 mb-2">
         <div className="col col-lg-2 border-solid border-2 mt-2 mb-2">
