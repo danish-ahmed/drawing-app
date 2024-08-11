@@ -13,16 +13,6 @@ async function getData() {
   return res.json();
 }
 
-// async function getBoardData() {
-//   const session = await getServerSession();
-//   console.log(`Fetching data from ${baseUrl}/api/board`)
-
-//   const res = await fetch( `${baseUrl}/api/board`)
-//   if (!res.ok) {
-//     throw new Error('Failed to fetch data')
-//   }
-//   return res.json();
-// }
 
 const Profile = async () => {
   const session = await getServerSession();
@@ -42,8 +32,7 @@ const Profile = async () => {
           <img className="h-auto max-w-full" src={lastImage.imageUri} alt="" />
         </div>
         <div className="col col-lg-2">
-          {/* <h1 className="text-5xl max-[500px]:text-2 mt-2 mb-2">AI Feedback</h1> */}
-          {/* <p>{lastImage.aiFeedback}</p> */}
+          
         </div>
       </div>
       <br />
